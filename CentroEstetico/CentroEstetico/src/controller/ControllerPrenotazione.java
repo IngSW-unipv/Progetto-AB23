@@ -11,6 +11,7 @@ import javax.swing.event.DocumentListener;
 
 import src.model.Cliente;
 import src.model.centro_estetico.CentroEstetico;
+import src.model.eccezioni.DateNonCorrette;
 import src.model.enums.TipiServizi;
 import src.model.servizi.Servizio;
 import src.view.HomePage;
@@ -119,8 +120,11 @@ public class ControllerPrenotazione {
 						if (risposta == JOptionPane.YES_OPTION) {
 							model.aggiungiServizio(s);
 							try {
-								model.prenotaAppuntamento(c, s, data, orario);
-								JOptionPane.showMessageDialog(view, "Appuntamento Prenotato");
+								if(model.prenotaAppuntamento(c, s, data, orario)) {
+									JOptionPane.showMessageDialog(view, "Appuntamento Prenotato");
+								} else {
+									JOptionPane.showMessageDialog(view, "Appuntamento non prenotato");
+								}
 							} catch (ParseException e1) {
 								e1.printStackTrace();
 							}

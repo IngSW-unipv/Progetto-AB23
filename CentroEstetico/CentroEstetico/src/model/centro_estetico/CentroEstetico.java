@@ -106,19 +106,21 @@ public class CentroEstetico {
         return true;
     }
 
-    public void prenotaAppuntamento(Cliente cliente, Servizio servizio, String data, String ora) throws ParseException {
+    public boolean prenotaAppuntamento(Cliente cliente, Servizio servizio, String data, String ora) throws ParseException {
         try {
             if(checkData(data) && !checkAppuntamento(cliente, servizio, data, ora)) {
                 appuntamenti.add(new Appuntamento(cliente, servizio, data, ora));
                 jdbc.insert(randomString(), cliente.getNome() + " " + cliente.getCognome(), String.valueOf(servizio.getPrezzo()));
                 System.out.println("Appuntamento inserito.");
                 visualizzaAppuntamenti();
+                return true;
             } else {
                 throw new DateNonCorrette();
             }
         } catch (DateNonCorrette d) {
             System.err.println("Le date inserite non sono compatibili! Riprova.");
-        }
+            return false;
+        } 
     }
 
 

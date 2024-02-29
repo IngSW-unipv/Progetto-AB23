@@ -29,9 +29,9 @@ public class Main {
         c.aggiungiServizio(s2);
         c.aggiungiServizio(s3);
 
-        c.prenotaAppuntamento(cliente, s1, "12/12/2027", "15:00");
-        c.prenotaAppuntamento(cliente2, s1, "12/12/2027", "11:00");
-        c.prenotaAppuntamento(cliente3, s3, "20/03/2024","10:00");
+       // c.prenotaAppuntamento(cliente, s1, "12/12/2027", "15:00");
+       // c.prenotaAppuntamento(cliente2, s1, "12/12/2027", "11:00");
+        c.prenotaAppuntamento(cliente3, s3, "20/02/2023","10:00");
 
         c.visualizzaAppuntamenti();
     
